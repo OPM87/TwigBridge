@@ -1,3 +1,8 @@
+## 1.0.1
+
+### Fixed
+- Fixed namespace typo for using default FileViewFinder ([#2](https://github.com/OPM87/TwigBridge/pull/2))
+
 ## 1.0.0
 
 First release since fork

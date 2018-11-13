@@ -93,6 +93,7 @@ return [
         | a) Twig namespace support (inside twig with include('@...'))
         | b) Allow calling views with file extension inside Laravel (view('file_xy.twig')), this
         |    is helpful if you use autocompletion with Laravel/Symfony Plugin in PhpStorm
+        | If you want to use Laravel FileViewFinder use "Illuminate\View\FileViewFinder"
         |
         */
         'fileViewFinder' => 'TwigBridge\FileViewFinder',
