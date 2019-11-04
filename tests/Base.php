@@ -54,7 +54,7 @@ abstract class Base extends TestCase
             'twigbridge' => [
                 'extensions' => $config['extensions'],
                 'twig'       => [
-                    'file_extensions'   => 'twig',
+                    'file_extensions'   => ['twig'],
                     'environment' => [
                         'debug'               => false,
                         'charset'             => 'utf-8',
