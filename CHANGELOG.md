@@ -1,3 +1,8 @@
+## 1.1.1
+
+- Allow Lavavel 6.x
+- Merge from rcrowe/master
+
 ## 1.1.0
 
 ### Changed
