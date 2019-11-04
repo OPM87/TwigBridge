@@ -148,7 +148,11 @@ class ServiceProvider extends ViewServiceProvider
             return new Command\Lint;
         });
 
-        $this->commands('command.twig', 'command.twig.clean', 'command.twig.lint');
+        $this->commands(
+            'command.twig', 
+            'command.twig.clean', 
+            'command.twig.lint'
+        );
     }
 
     /**
@@ -173,8 +177,10 @@ class ServiceProvider extends ViewServiceProvider
 
         $this->app->bindIf('twig.options', function () use ($config) {
             $options = $config->get('twigbridge.twig.environment', []);
-
+            
+            // Check whether we have the cache path set
             if (!isset($options['cache']) || $options['cache'] === null || $options['cache'] === true) {
+                // No cache path set for Twig, lets set to the Laravel views storage folder
                 $options['cache'] = storage_path('framework' . DIRECTORY_SEPARATOR . 'views' . DIRECTORY_SEPARATOR . 'twig');
             }
 
@@ -205,6 +211,7 @@ class ServiceProvider extends ViewServiceProvider
      */
     protected function registerLoaders()
     {
+        // The array used in the ArrayLoader
         $this->app->bindIf('twig.templates', function () {
             return [];
         });
@@ -214,7 +221,11 @@ class ServiceProvider extends ViewServiceProvider
         });
 
         $this->app->bindIf('twig.loader.viewfinder', function () {
-            return new Twig\Loader($this->app['files'], $this->app['view']->getFinder(), $this->app['twig.normalizer']);
+            return new Twig\Loader(
+                $this->app['files'], 
+                $this->app['view']->getFinder(), 
+                $this->app['twig.normalizer']
+            );
         });
 
         $this->app->bindIf(
@@ -240,7 +251,10 @@ class ServiceProvider extends ViewServiceProvider
             $extensions = $this->app['twig.extensions'];
             $lexer = $this->app['twig.lexer'];
             $twig = new Bridge(
-                $this->app['twig.loader'], $this->app['twig.options'], $this->app['twig.normalizer'], $this->app
+                $this->app['twig.loader'], 
+                $this->app['twig.options'], 
+                $this->app['twig.normalizer'], 
+                $this->app
             );
 
             // Instantiate and add extensions

@@ -17,7 +17,7 @@ abstract class Base extends TestCase
     {
         parent::__construct($name, $data, $dataName);
 
-        $this->twigBridgeRoot = realpath(__DIR__.'/../src');
+        $this->twigBridgeRoot = realpath(__DIR__ . '/../src');
     }
 
     public function tearDown()
@@ -48,14 +48,14 @@ abstract class Base extends TestCase
             m::mock('Illuminate\Events\Dispatcher')
         );
 
-        $config = include $this->twigBridgeRoot.'/../config/twigbridge.php';
+        $config = include $this->twigBridgeRoot . '/../config/twigbridge.php';
 
-        $configData = array(
-        	'twigbridge' => array(
+        $configData = [
+            'twigbridge' => [
                 'extensions' => $config['extensions'],
-                'twig' => array(
-                    'file_extensions' => ['twig'],
-                    'environment' => array(
+                'twig'       => [
+                    'file_extensions'   => 'twig',
+                    'environment' => [
                         'debug'               => false,
                         'charset'             => 'utf-8',
                         'base_template_class' => 'TwigBridge\Twig\Template',
@@ -64,11 +64,11 @@ abstract class Base extends TestCase
                         'strict_variables'    => false,
                         'autoescape'          => true,
                         'optimizations'       => -1,
-                    ),
-                    'globals' => array(),
-                ),
-    	    ),
-        );
+                    ],
+                    'globals'     => [],
+                ],
+            ],
+        ];
 
         $configData['twigbridge'] = array_replace_recursive($configData['twigbridge'], $customConfig);
 

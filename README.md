@@ -155,6 +155,7 @@ TwigBridge comes with the following extensions enabled by default:
 - TwigBridge\Extension\Laravel\Config
 - TwigBridge\Extension\Laravel\Dump
 - TwigBridge\Extension\Laravel\Form
+- TwigBridge\Extension\Laravel\Gate
 - TwigBridge\Extension\Laravel\Html
 - TwigBridge\Extension\Laravel\Input
 - TwigBridge\Extension\Laravel\Session
@@ -191,6 +192,7 @@ Laravel's standard helper functions.
 ### Functions:
  * `asset`, `action`, `url`, `route`, `secure_url`, `secure_asset`
  * `auth_check`, `auth_guest`, `auth_user`
+ * `can`
  * `config_get`, `config_has`
  * `dump`
  * `form_*` (All the `Form::*` methods, snake_cased)

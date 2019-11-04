@@ -34,9 +34,13 @@ class Dump extends AbstractExtension
 
     public function getFunctions()
     {
-        return array(
-            new TwigFunction('dump', array($this, 'dump'), array('is_safe' => array('html'), 'needs_context' => true, 'needs_environment' => true)),
-        );
+        return [
+            new TwigFunction('dump', [$this, 'dump'], [
+                'is_safe'           => ['html'],
+                'needs_context'     => true,
+                'needs_environment' => true
+            ]),
+        ];
     }
 
     public function getName()
@@ -50,13 +54,13 @@ class Dump extends AbstractExtension
             return;
         }
         if (2 === func_num_args()) {
-            $vars = array();
+            $vars = [];
             foreach ($context as $key => $value) {
                 if (!$value instanceof Template) {
                     $vars[$key] = $value;
                 }
             }
-            $vars = array($vars);
+            $vars = [$vars];
         } else {
             $vars = func_get_args();
             unset($vars[0], $vars[1]);

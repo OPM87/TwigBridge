@@ -95,6 +95,19 @@ class Lint extends Command
         //
         //     return $this->display([$this->validate($template)], $format);
         // }
+        // Check STDIN for the template
+        if (ftell(STDIN) === 0) {
+            // Read template in
+            $template = '';
+
+            while (!feof(STDIN)) {
+                $template .= fread(STDIN, 1024);
+            }
+
+            if (!empty($template)) {
+                return $this->display([$this->validate($template)], $format);
+            }
+        }
 
         $files   = $this->getFiles($this->argument('filename'), $this->option('file'), $this->option('directory'));
         $details = [];
