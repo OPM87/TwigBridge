@@ -1,4 +1,8 @@
-## 1.1.1
+## 1.1.3
+
+- Allow Lavavel 8.x
+
+## 1.1.2
 
 - Allow Lavavel 7.x
 
